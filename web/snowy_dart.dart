@@ -13,7 +13,8 @@ class Flake{
 }
 
 var flakes = [];
-const int maxFlakes= 100; //max number of flakes 
+const int maxFlakes= 60; //max number of flakes 
+const int speed = 5; // snowfall speed
 // Duration of the animation
 const thirtyMills = const Duration(milliseconds:30);
 CanvasRenderingContext2D ctx;
@@ -21,9 +22,12 @@ var W = window.innerWidth;
 var H = window.innerHeight;
 var rng = new math.Random();
 
+
 void snowFall(){
+  // draw background on canvas
   ctx.fillStyle="#000";
   ctx.fillRect(0,0,W,H);
+  
   //drawing intitial snowflakes on canvas
   ctx.fillStyle = "#fff";
   // rain 
@@ -42,7 +46,7 @@ void snowFall(){
     angl+=0.1;
     var f=flakes[i];
     f._x +=math.sin(angl).abs() + 0.1 ;
-    f._y += math.cos(angl).abs() * 3;
+    f._y += math.cos(angl).abs() * speed;
     //resetting snowflakes when they are out of frame
     if(f._x > W || f._x < 0 || f._y > H){
       f._x = rng.nextDouble() * W;
