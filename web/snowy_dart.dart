@@ -76,6 +76,6 @@ void main() {
     );
   }
     
-  // make the magic happen
+  // make the magic happen every 30 milliseconds
   new Timer.periodic(thirtyMills, (Timer t) => snowFall());
 }
